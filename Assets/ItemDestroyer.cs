@@ -11,23 +11,13 @@ public class ItemDestroyer : MonoBehaviour
     public GameObject carPrefab;
     //coneprefabを入れる
     public GameObject conePrefab;
-    //スタート地点
-    private int startPos = 80;
-    //ゴール地点
-    private int goalPos = 360;
-
-    //Unityちゃんのオブジェクト
-    private GameObject unitychan;
-
+    
     private GameObject MainCamera;
-
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //Unityちゃんのオブジェクトを取得
-        this.unitychan = GameObject.Find("unitychan");
 
         this.MainCamera = GameObject.Find("Main Camera");
 
@@ -36,19 +26,32 @@ public class ItemDestroyer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //一定の距離ごとにアイテムを削除
-        for (int i = startPos; i < goalPos; i += 15)
-        {
-            if(conePrefab.transform.position.z < MainCamera.transform.position.z)
-            {
-                Destroy(conePrefab);
-                Debug.Log("successA");
-            }
-            
-            //if
+        GameObject[] g = GameObject.FindGameObjectsWithTag("TrafficConeTag");
+        GameObject[] h = GameObject.FindGameObjectsWithTag("CoinTag");
+        GameObject[] f = GameObject.FindGameObjectsWithTag("CarTag");
 
-            //if()
-            
+        for (int i = 0; i < g.Length; i++)
+        {
+            //コーンを削除
+            if (g[i].transform.position.z < MainCamera.transform.position.z)
+            {
+                Destroy(g[i]);
+                Debug.Log("A");
+            }
+
+            //コインを削除
+            if (h[i].transform.position.z < MainCamera.transform.position.z)
+            {
+                Destroy(h[i]);
+                Debug.Log("B");
+            }
+
+            //車を削除
+            if (f[i].transform.position.z < MainCamera.transform.position.z)
+            {
+                Destroy(f[i]);
+                Debug.Log("C");
+            }
         }
     }
 }
