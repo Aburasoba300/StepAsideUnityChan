@@ -38,20 +38,24 @@ public class ItemDestroyer : MonoBehaviour
                 Destroy(g[i]);
                 Debug.Log("A");
             }
+        }
 
+        for (int j = 0; j < h.Length; j++)
+        {
             //ƒRƒCƒ“‚ðíœ
-            if (h[i].transform.position.z < MainCamera.transform.position.z)
+            if (h[j].transform.position.z < MainCamera.transform.position.z)
             {
-                Destroy(h[i]);
+                Destroy(h[j]);
                 Debug.Log("B");
             }
+        }
 
+        for (int k = 0; k < f.Length; k++)
             //ŽÔ‚ðíœ
-            if (f[i].transform.position.z < MainCamera.transform.position.z)
+            if (f[k].transform.position.z < MainCamera.transform.position.z)
             {
-                Destroy(f[i]);
+                Destroy(f[k]);
                 Debug.Log("C");
             }
         }
     }
-}
